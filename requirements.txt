@@ -1,4 +1,3 @@
 discord.py==0.16.12
-asynchio
 bs4
 requests
