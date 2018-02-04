@@ -57,7 +57,7 @@ async def blacklist(context, *channels : discord.Channel):
 		mo = channelRegex.search(blacklistFile.read())
 
 		if mo == None:
-			blacklistFile.write(channel.id + '\n')
+			print(mo.group(0))
 		else:
 			print('Channel "' + channel.name + '" already blacklisted.')
 
