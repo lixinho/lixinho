@@ -98,7 +98,7 @@ async def word(amount : int):
 
 # Help Stuff
 @bot.command()
-async def help():
+async def commands():
 	embed = discord.Embed(color=discord.Color.green(), title='My Commands', description=':lixinho_1::lixinho_2: Here\'s my commands list:\n:lixinho_3::lixinho_4:')
 	embed.add_field(name='?crypto <crypto #1> ... <crypto #n>', value=':lixinho: Searches for informations regarding the specified cryptocurrencies.', inline=False)
 	embed.add_field(name='?rand <num #1> <num #2>', value=':lixinho: Generates a random number "n" such as `num #1 <= n <= num #2`.', inline=False)
