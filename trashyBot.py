@@ -13,7 +13,7 @@ async def on_ready():
 	print('-' * 15)
 
 @bot.command(pass_context=True)
-async def printEmbed(context, *params):
+async def crypto(context, *params):
 	paramList = [param.lower() for param in list(params)]
 	cryptoList = []
 
@@ -29,8 +29,37 @@ async def printEmbed(context, *params):
 		cryptoList.append(coinMarketCap[0])
 
 	cryptoList = sorted(cryptoList, key=lambda k: k['rank'])
-	print(cryptoList)
-	
+
+	cryptoRank = ''
+	cryptoName = ''
+	cryptoSymbol = ''
+	cryptoUSD = ''
+	cryptoBRL = ''
+	cryptoBTC = ''
+	crypto24h = ''
+	crypto7d = ''
+
+	for crypto in cryptoList:
+		cryptoRank += crypto['rank'] + '\n'
+		cryptoName += crypto['name'] + '\n'
+		cryptoSymbol += crypto['symbol'] + '\n'
+		cryptoUSD += crypto['price_usd'] + '\n'
+		cryptoBRL += crypto['price_brl'] + '\n'
+		cryptoBTC += crypto['price_btc'] + '\n'
+		crypto24h += crypto['percent_change_24h'] + '\n'
+		crypto7d += crypto['percent_change_7d'] + '\n'
+
+	embed = discord.Embed(title='Cryptocurrencies Informations', color=discord.Color.gold())
+	embed.add_field(name='Rank', value=cryptoRank, inline=True)
+	embed.add_field(name='Name', value=cryptoName, inline=True)
+	embed.add_field(name='Symbol', value=cryptoSymbol, inline=True)
+	embed.add_field(name='USD', value=cryptoUSD, inline=True)
+	embed.add_field(name='BRL', value=cryptoBRL, inline=True)
+	embed.add_field(name='BTC', value=cryptoBTC, inline=True)
+	embed.add_field(name='24h (%)', value=crypto24h, inline=True)
+	embed.add_field(name='7d (%)', value=crypto7d, inline=True)
+
+	await bot.say(embed=embed)
 
 # Reads the variable set in Heroku.
 bot.run(os.environ.get('TOKEN', None))
