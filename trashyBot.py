@@ -54,6 +54,11 @@ async def blacklist(context):
 	myFile.write('xd')
 	myFile.close()
 
+@bot.command(pass_context=True)
+async def printBlacklist(context):
+	myFile = open('lul.txt')
+	await bot.say(myFile.read())
+	myFile.close()
 
 # Reads the variable set in Heroku.
 bot.run(os.environ.get('TOKEN', None))
