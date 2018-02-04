@@ -50,17 +50,8 @@ async def crypto(context, *params):
 # Util Stuff
 @bot.command(pass_context=True)
 async def blacklist(context, *channels : discord.Channel):
-	blacklistFile = open('blacklist.txt', 'a+')
+	blacklistFile = open('blacklist.txt', 'r')
 	print(blacklistFile.read())
-	for channel in channels:
-		channelRegex = re.compile(r'{}'.format(channel.id))
-		mo = channelRegex.search(blacklistFile.read())
-
-		if mo == None:
-			print(mo.group(0))
-		else:
-			print('Channel "' + channel.name + '" already blacklisted.')
-
 	blacklistFile.close()
 		
 
