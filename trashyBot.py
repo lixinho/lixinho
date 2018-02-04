@@ -49,9 +49,9 @@ async def crypto(context, *params):
 
 # Util Stuff
 @bot.command(pass_context=True)
-async def blacklist(context, *channels):
+async def blacklist(context, *channels : Channel):
 	for channel in channels:
-		print(channel)
+		print(channel.name)
 
 # Reads the variable set in Heroku.
 bot.run(os.environ.get('TOKEN', None))
