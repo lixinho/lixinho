@@ -50,17 +50,7 @@ async def crypto(context, *params):
 # Util Stuff
 @bot.command(pass_context=True)
 async def blacklist(context, *channels : discord.Channel):
-	blacklistFile = open('blacklist.txt', 'a+')
-	
-	for channel in channels:
-		channelRegex = re.compile(r'%s' % channel.id)
-		mo = channelRegex.search(blacklistFile.read())
-
-		if mo == None:
-			blacklistFile.write(channel.id + '\n')
-		else:
-			await bot.say(channel.name + ' is already blacklisted.')
-	blacklistFile.close()
+	print(os.listdir())
 		
 
 # Reads the variable set in Heroku.
