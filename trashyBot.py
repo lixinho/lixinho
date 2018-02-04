@@ -49,7 +49,7 @@ async def crypto(context, *params):
 
 # Util Stuff
 @bot.command(pass_context=True)
-async def blacklist(context, *channels : Channel):
+async def blacklist(context, *channels : discord.Channel):
 	for channel in channels:
 		print(channel.name)
 
