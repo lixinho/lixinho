@@ -1,4 +1,4 @@
-import discord, requests, json, bs4
+import discord, requests, json, bs4, os
 from discord.ext import commands
 import random
 
@@ -106,5 +106,5 @@ async def lClear(context, amount : int):
 
     await bot.delete_messages(messages)
 
-bot.run('$TOKEN')
+bot.run(os.environ.get('TOKEN', None))
 #bot.run('NDA4NDU5NjA4NDYyNzIxMDI0.DVQXww.-lcXjbzC6CwQw014gSrVPM88hWY')
