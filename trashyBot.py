@@ -58,7 +58,7 @@ async def clear(context, amount : int):
 	if mo == None:
 		msg = await bot.say(embed=discord.Embed(color=discord.Color.red(), description='You can\'t use this command here. (Channel blacklisted)'))
 		await asyncio.sleep(3)
-		await bot.delete_message(msg)
+		await bot.delete_messages([msg, context.message])
 	else:
 		messages = []
 		async for message in bot.logs_from(context.message.channel, limit=amount):
