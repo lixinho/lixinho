@@ -105,6 +105,6 @@ async def help():
 	embed.add_field(name='?choose <opt #1> ... <opt #2>', value=':lixinho: Chooses a random element from the specified options.', inline=False)
 	embed.add_field(name='?word <n>', value=':lixinho: Generates "n" random words.', inline=False)
 	embed.add_field(name='?clear <n>', value=':lixinho: Deletes "n" messages in the chat room.', inline=False)
-
+	await bot.say(embed=embed)
 # Reads the variable set in Heroku.
 bot.run(os.environ.get('TOKEN', None))
