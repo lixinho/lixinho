@@ -1,4 +1,4 @@
-import discord, random, requests, bs4, json
+import discord, random, requests, bs4, json, os
 from discord.ext import commands
 
 description = 'A sad bot.'
