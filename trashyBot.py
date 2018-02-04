@@ -1,4 +1,4 @@
-import discord, random, requests, bs4, json, os, re
+import discord, random, requests, bs4, json, os, re, asyncio
 from discord.ext import commands
 
 description = 'A sad bot.'
@@ -56,10 +56,15 @@ async def clear(context, amount : int):
 	mo = channelRegex.search(whitelistFile.read())
 
 	if mo == None:
-		print('This channel is not whitelisted.')
+		msg = await bot.say(embed=discord.Embed(color=discord.Color.red(), description='You can\'t use this command here. (Channel blacklisted)'))
+		await asyncio.sleep(3)
+		await bot.delete_message(msg)
 	else:
-		print('This channel is whitelisted.')
-	
+		messages = []
+		async for message in bot.logs_from(context.message.channel, limit=amount):
+			messages.append(message)
+		await bot.delete_messages(messages)
+
 	whitelistFile.close()
 
 # Reads the variable set in Heroku.
