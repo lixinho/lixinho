@@ -100,11 +100,11 @@ async def word(amount : int):
 @bot.command()
 async def commands():
 	embed = discord.Embed(color=discord.Color.green(), title='My Commands', description=':lixinho_1::lixinho_2: Here\'s my commands list:\n:lixinho_3::lixinho_4:')
-	embed.add_field(name='?crypto <crypto #1> ... <crypto #n>', value=':lixinho: Searches for informations regarding the specified cryptocurrencies.', inline=False)
-	embed.add_field(name='?rand <num #1> <num #2>', value=':lixinho: Generates a random number "n" such as `num #1 <= n <= num #2`.', inline=False)
-	embed.add_field(name='?choose <opt #1> ... <opt #2>', value=':lixinho: Chooses a random element from the specified options.', inline=False)
-	embed.add_field(name='?word <n>', value=':lixinho: Generates "n" random words.', inline=False)
-	embed.add_field(name='?clear <n>', value=':lixinho: Deletes "n" messages in the chat room.', inline=False)
+	embed.add_field(name='?crypto <crypto #1> ... <crypto #n>', value='<:lixinho:409778817264254989> Searches for informations regarding the specified cryptocurrencies.', inline=False)
+	embed.add_field(name='?rand <num #1> <num #2>', value='<:lixinho:409778817264254989> Generates a random number "n" such as `num #1 <= n <= num #2`.', inline=False)
+	embed.add_field(name='?choose <opt #1> ... <opt #2>', value='<:lixinho:409778817264254989> Chooses a random element from the specified options.', inline=False)
+	embed.add_field(name='?word <n>', value='<:lixinho:409778817264254989> Generates "n" random words.', inline=False)
+	embed.add_field(name='?clear <n>', value='<:lixinho:409778817264254989> Deletes "n" messages in the chat room.', inline=False)
 	await bot.say(embed=embed)
 # Reads the variable set in Heroku.
 bot.run(os.environ.get('TOKEN', None))
