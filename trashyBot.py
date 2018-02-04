@@ -29,7 +29,7 @@ async def crypto(context, *params):
 		cryptoList.append(coinMarketCap[0])
 
 	cryptoList = sorted(cryptoList, key=lambda k: k['rank'])
-
+	print(cryptoList)
 	cryptoRank = ''
 	cryptoName = ''
 	cryptoSymbol = ''
