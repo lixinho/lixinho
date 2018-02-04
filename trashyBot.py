@@ -32,7 +32,7 @@ async def crypto(context, *params):
 	embed = discord.Embed(title='Cryptocurrency Market Capitalizations', url='https://coinmarketcap.com/', color=discord.Color.gold())
 	for cryptoDict in cryptoList:
 		embed.add_field(name='[{}] {} (*{}*)'.format(cryptoDict['rank'], cryptoDict['name'], cryptoDict['symbol']),
-			value='**Price (USD)**: {} **Price (BRL)**: {} **Price (BTC)**: {} **% Change (24h)**: {} **% Change (7d)**: {}'.format(cryptoDict['price_usd'], cryptoDict['price_brl'], cryptoDict['price_btc'], cryptoDict['percent_change_24h'], cryptoDict['percent_change_7d']),
+			value='\t**Price (USD)**: {}\n\t**Price (BRL)**: {}\n\t**Price (BTC)**: {}\n\t**% Change (24h)**: {}\n\t**% Change (7d)**: {}\n'.format(cryptoDict['price_usd'], cryptoDict['price_brl'], cryptoDict['price_btc'], cryptoDict['percent_change_24h'], cryptoDict['percent_change_7d']),
 			inline=False)
 
 	await bot.say(embed=embed)
