@@ -50,7 +50,7 @@ async def crypto(context, *params):
 # Util Stuff
 @bot.command(pass_context=True)
 async def blacklist(context, *channels : discord.Channel):
-	blacklistFile = open('blacklist.txt', 'r')
+	blacklistFile = open('blacklist.txt', 'a+')
 	print(blacklistFile.read())
 	blacklistFile.close()
 		
