@@ -70,22 +70,22 @@ async def clear(context, amount : int):
 @bot.command()
 async def word(amount : int):
 	wordList = []
-    wordUrl = 'https://www.palavrasque.com/palavra-aleatoria.php?Submit=Nova+palavra'
+	wordUrl = 'https://www.palavrasque.com/palavra-aleatoria.php?Submit=Nova+palavra'
 
-    for i in range(amount):
-        res = requests.get(wordUrl)
-        res.encoding = 'utf-8'
-        try:
-            res.raise_for_status()
-        except Exception as e:
-            print(str(e))
-            continue
+	for i in range(amount):
+		res = requests.get(wordUrl)
+		res.encoding = 'utf-8'
+		try:
+			res.raise_for_status()
+		except Exception as e:
+			print(str(e))
+			continue
 
-        soup = bs4.BeautifulSoup(res.text, 'html.parser')
-        word = soup.select('b')[0].getText()
-        wordList.append(word)
+		soup = bs4.BeautifulSoup(res.text, 'html.parser')
+		word = soup.select('b')[0].getText()
+		wordList.append(word)
 
-    await bot.say(embed=discord.Embed(color=discord.Color.green(), description='Here\'s your random words: **' + ' '.join(wordList) + '**!'))
+	await bot.say(embed=discord.Embed(color=discord.Color.green(), description='Here\'s your random words: **' + ' '.join(wordList) + '**!'))
 
 # Reads the variable set in Heroku.
 bot.run(os.environ.get('TOKEN', None))
