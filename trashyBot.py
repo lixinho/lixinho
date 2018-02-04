@@ -28,7 +28,9 @@ async def printEmbed(context, *params):
 		coinMarketCap = json.loads(res.text)
 		cryptoList.append(coinMarketCap[0])
 
+	cryptoList = sorted(cryptoList, key=lambda k: k['rank'])
 	print(cryptoList)
+	
 
 # Reads the variable set in Heroku.
 bot.run(os.environ.get('TOKEN', None))
