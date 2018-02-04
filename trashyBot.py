@@ -30,7 +30,7 @@ async def crypto(context, *params):
 		cryptoList.append(coinMarketCap[0])
 
 	cryptoList = sorted(cryptoList, key=lambda k: int(k['rank']))
-	embed = discord.Embed(title='Cryptocurrency Market Capitalizations', url='https://coinmarketcap.com/', color=discord.Color.gold())
+	embed = discord.Embed(title='Cryptocurrency Market Capitalizations', url='https://coinmarketcap.com/', color=discord.Color.green())
 	for cryptoDict in cryptoList:
 		embed.add_field(
 			name='[{}º] {} (*{}*)'.format(
@@ -48,6 +48,15 @@ async def crypto(context, *params):
 	await bot.say(embed=embed)
 
 # Util Stuff
+@bot.command()
+async def rand(start : int, end : int):
+	await bot.say(embed=discord.Embed(color=discord.Color.green(), description='Here\'s what I\'ve chosen: **' + str(random.randint(start, end)) + '**!'))
+
+@bot.command()
+async def choose(*opt):
+	options = list(opt)
+	await bot.say(embed=discord.Embed(color=discord.Color.green(), description='Here\'s what I\'ve chosen: **' + str(random.choice(options)) + '**!'))
+
 @bot.command(pass_context=True)
 async def clear(context, amount : int):
 	whitelistFile = open('whitelist.txt')
@@ -56,7 +65,7 @@ async def clear(context, amount : int):
 	mo = channelRegex.search(whitelistFile.read())
 
 	if mo == None:
-		msg = await bot.say(embed=discord.Embed(color=discord.Color.green(), description='You can\'t use this command here. (Channel blacklisted)'))
+		msg = await bot.say(embed=discord.Embed(color=discord.Color.red(), description='You can\'t use this command here. (Channel blacklisted)'))
 		await asyncio.sleep(3)
 		await bot.delete_messages([msg, context.message])
 	else:
