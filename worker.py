@@ -106,4 +106,5 @@ async def lClear(context, amount : int):
 
     await bot.delete_messages(messages)
 
-bot.run('NDA4NDU5NjA4NDYyNzIxMDI0.DVQXww.-lcXjbzC6CwQw014gSrVPM88hWY')
+bot.run('$TOKEN')
+#bot.run('NDA4NDU5NjA4NDYyNzIxMDI0.DVQXww.-lcXjbzC6CwQw014gSrVPM88hWY')
