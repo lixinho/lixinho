@@ -15,6 +15,8 @@ async def on_ready():
 @bot.command()
 async def printEmbed():
     embed = discord.Embed()
+    embed.title = 'A Title'
+    embed.description = 'Luls'
     embed.add_field(name='Field #1', value='Simple', inline=True)
     embed.add_field(name='Field #2', value='Text', inline=True)
     await bot.say(embed=embed)
