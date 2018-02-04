@@ -28,7 +28,7 @@ async def crypto(context, *params):
 		coinMarketCap = json.loads(res.text)
 		cryptoList.append(coinMarketCap[0])
 
-	cryptoList = sorted(cryptoList, key=lambda k: k['rank'])
+	cryptoList = sorted(cryptoList, key=lambda k: int(k['rank']))
 	print(cryptoList)
 	cryptoRank = ''
 	cryptoName = ''
