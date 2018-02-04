@@ -49,9 +49,18 @@ async def crypto(context, *params):
 
 # Util Stuff
 @bot.command(pass_context=True)
-async def blacklist(context, *channels : discord.Channel):
-	print(os.listdir())
-		
+async def clear(context, amount : int):
+	whitelistFile = open('whitelist.txt')
+
+	channelRegex = re.compile(r'%s' % context.message.channel.id)
+	mo = channelSearch(whitelistFile.read())
+
+	if mo == None:
+		print('This channel is not whitelisted.')
+	else:
+		print('This channel is whitelisted.')
+	
+	whitelistFile.close()
 
 # Reads the variable set in Heroku.
 bot.run(os.environ.get('TOKEN', None))
