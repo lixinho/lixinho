@@ -36,7 +36,7 @@ async def crypto(context, *params):
 				cryptoDict['rank'],
 				cryptoDict['name'],
 				cryptoDict['symbol']),
-			value='\t\t**Price (USD)**: {}\n\t**Price (BRL)**: {}\n\t**Price (BTC)**: {}\n\t**% Change (24h)**: {}\n\t**% Change (7d)**: {}\n'.format(
+			value='**Price (USD)**: {}\n**Price (BRL)**: {}\n**Price (BTC)**: {}\n**% Change (24h)**: {}\n**% Change (7d)**: {}\n'.format(
 				cryptoDict['price_usd'],
 				cryptoDict['price_brl'],
 				cryptoDict['price_btc'],
