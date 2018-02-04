@@ -12,6 +12,7 @@ async def on_ready():
 	print('ID: ' + bot.user.id)
 	print('-' * 15)
 
+# Crypto Stuff
 @bot.command(pass_context=True)
 async def crypto(context, *params):
 	paramList = [param.lower() for param in list(params)]
@@ -36,7 +37,7 @@ async def crypto(context, *params):
 				cryptoDict['rank'],
 				cryptoDict['name'],
 				cryptoDict['symbol']),
-			value='**Price (USD)**:'.rjust(20, ' ') + '{}\n**Price (BRL)**: {}\n**Price (BTC)**: {}\n**% Change (24h)**: {}\n**% Change (7d)**: {}\n'.format(
+			value='**Price (USD)**: {}\n**Price (BRL)**: {}\n**Price (BTC)**: {}\n**% Change (24h)**: {}\n**% Change (7d)**: {}\n'.format(
 				cryptoDict['price_usd'],
 				cryptoDict['price_brl'],
 				cryptoDict['price_btc'],
@@ -45,6 +46,14 @@ async def crypto(context, *params):
 			inline=False)
 
 	await bot.say(embed=embed)
+
+# Util Stuff
+@bot.command(pass_context=True)
+async def blacklist(context):
+	myFile = open('lul.txt', 'w')
+	myFile.write('xd')
+	myFile.close()
+
 
 # Reads the variable set in Heroku.
 bot.run(os.environ.get('TOKEN', None))
