@@ -56,7 +56,7 @@ async def clear(context, amount : int):
 	mo = channelRegex.search(whitelistFile.read())
 
 	if mo == None:
-		msg = await bot.say(embed=discord.Embed(color=discord.Color.red(), description='You can\'t use this command here. (Channel blacklisted)'))
+		msg = await bot.say(embed=discord.Embed(color=discord.Color.green(), description='You can\'t use this command here. (Channel blacklisted)'))
 		await asyncio.sleep(3)
 		await bot.delete_messages([msg, context.message])
 	else:
@@ -66,6 +66,26 @@ async def clear(context, amount : int):
 		await bot.delete_messages(messages)
 
 	whitelistFile.close()
+
+@bot.command()
+async def word(amount : int):
+	wordList = []
+    wordUrl = 'https://www.palavrasque.com/palavra-aleatoria.php?Submit=Nova+palavra'
+
+    for i in range(amount):
+        res = requests.get(wordUrl)
+        res.encoding = 'utf-8'
+        try:
+            res.raise_for_status()
+        except Exception as e:
+            print(str(e))
+            continue
+
+        soup = bs4.BeautifulSoup(res.text, 'html.parser')
+        word = soup.select('b')[0].getText()
+        wordList.append(word)
+
+    await bot.say(embed=discord.Embed(color=discord.Color.green(), description='Here\'s your random words: **' + ' '.join(wordList) + '**!'))
 
 # Reads the variable set in Heroku.
 bot.run(os.environ.get('TOKEN', None))
