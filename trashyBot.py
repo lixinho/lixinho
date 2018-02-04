@@ -53,7 +53,7 @@ async def clear(context, amount : int):
 	whitelistFile = open('whitelist.txt')
 
 	channelRegex = re.compile(r'%s' % context.message.channel.id)
-	mo = channelSearch(whitelistFile.read())
+	mo = channelRegex.search(whitelistFile.read())
 
 	if mo == None:
 		print('This channel is not whitelisted.')
