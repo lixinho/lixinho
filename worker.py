@@ -1,4 +1,3 @@
-#! python3
 import discord, requests, json, bs4
 from discord.ext import commands
 import random
