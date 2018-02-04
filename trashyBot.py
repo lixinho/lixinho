@@ -49,16 +49,9 @@ async def crypto(context, *params):
 
 # Util Stuff
 @bot.command(pass_context=True)
-async def blacklist(context):
-	myFile = open('lul.txt', 'w')
-	myFile.write('xd')
-	myFile.close()
-
-@bot.command(pass_context=True)
-async def printBlacklist(context):
-	myFile = open('lul.txt')
-	await bot.say(myFile.read())
-	myFile.close()
+async def blacklist(context, *channels):
+	for channel in channels:
+		print(channel)
 
 # Reads the variable set in Heroku.
 bot.run(os.environ.get('TOKEN', None))
