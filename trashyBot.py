@@ -53,7 +53,12 @@ async def crypto(context, *params):
 # Util Stuff
 @bot.command(pass_context=True)
 async def survey (context, question, *reactions):
-	print(reactions)
+	botMessage = discord.Message()
+	botMessage.content = question
+	for reaction in reactions:
+		bot.add_reaction(botMessage, reaction)
+		
+	await bot.say(botMessage)
 
 @bot.command()
 async def rand(start : int, end : int):
