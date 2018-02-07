@@ -56,8 +56,8 @@ async def survey (context, question, *reactions):
 	botMessage = discord.Message()
 	botMessage.content = question
 	for reaction in reactions:
-		bot.add_reaction(botMessage, reaction)
-		
+		await bot.add_reaction(botMessage, reaction)
+
 	await bot.say(botMessage)
 
 @bot.command()
