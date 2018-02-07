@@ -60,10 +60,7 @@ async def survey (context, question, *reactions):
 		await bot.add_reaction(botMessage, reaction)
 
 	authorMessage = await bot.wait_for_message(channel=context.message.channel, author=surveyAuthor, content='$survey')
-
-	for reaction in botMessage.reactions:
-		reactors = await bot.get_reaction_users(reaction)
-		await bot.say(reaction + ' : ' + str(reactors))
+	print('Lul')
 
 @bot.command()
 async def rand(start : int, end : int):
