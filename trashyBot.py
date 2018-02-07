@@ -130,6 +130,7 @@ async def commands():
 	embed.add_field(name='?clear <n>', value='<:lixinho:409778817264254989> Deletes "n" messages in the chat room.', inline=False)
 	embed.add_field(name='?crypto <crypto #1> ... <crypto #n>', value='<:lixinho:409778817264254989> Searches for informations regarding the specified cryptocurrencies.', inline=False)
 	embed.add_field(name='?rand <num #1> <num #2>', value='<:lixinho:409778817264254989> Generates a random number "n" such as `num #1 <= n <= num #2`.', inline=False)
+	embed.add_field(name='?survey "text" <emoji #1> ... <emoji #n>', value='<:lixinho:409778817264254989> Creates a survey with the specified emojis. Use `$survey` to end the survey and receive the results.', inline=False)
 	embed.add_field(name='?word <n>', value='<:lixinho:409778817264254989> Generates "n" random words.', inline=False)
 	await bot.say(embed=embed)
 
