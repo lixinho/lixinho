@@ -29,6 +29,9 @@ async def crypto(context, *params):
 		coinMarketCap = json.loads(res.text)
 		cryptoList.append(coinMarketCap[0])
 
+	if len(cryptoList) == 0:
+		return
+
 	cryptoList = sorted(cryptoList, key=lambda k: int(k['rank']))
 	embed = discord.Embed(title='Cryptocurrency Market Capitalizations', url='https://coinmarketcap.com/', color=discord.Color.green())
 	for cryptoDict in cryptoList:
@@ -48,6 +51,10 @@ async def crypto(context, *params):
 	await bot.say(embed=embed)
 
 # Util Stuff
+@bot.command(pass_context=True)
+async def survey (context, question, *reactions):
+	print(reactions)
+
 @bot.command()
 async def rand(start : int, end : int):
 	await bot.say(embed=discord.Embed(color=discord.Color.green(), description='Here\'s what I\'ve chosen: **' + str(random.randint(start, end)) + '**!'))
@@ -100,11 +107,12 @@ async def word(amount : int):
 @bot.command()
 async def commands():
 	embed = discord.Embed(color=discord.Color.green(), title='My Commands', description='<:lixinho_trab:409793689809059841> Here\'s my commands list:')
+	embed.add_field(name='?choose <opt #1> ... <opt #2>', value='<:lixinho:409778817264254989> Chooses a random element from the specified options.', inline=False)
+	embed.add_field(name='?clear <n>', value='<:lixinho:409778817264254989> Deletes "n" messages in the chat room.', inline=False)
 	embed.add_field(name='?crypto <crypto #1> ... <crypto #n>', value='<:lixinho:409778817264254989> Searches for informations regarding the specified cryptocurrencies.', inline=False)
 	embed.add_field(name='?rand <num #1> <num #2>', value='<:lixinho:409778817264254989> Generates a random number "n" such as `num #1 <= n <= num #2`.', inline=False)
-	embed.add_field(name='?choose <opt #1> ... <opt #2>', value='<:lixinho:409778817264254989> Chooses a random element from the specified options.', inline=False)
 	embed.add_field(name='?word <n>', value='<:lixinho:409778817264254989> Generates "n" random words.', inline=False)
-	embed.add_field(name='?clear <n>', value='<:lixinho:409778817264254989> Deletes "n" messages in the chat room.', inline=False)
 	await bot.say(embed=embed)
+
 # Reads the variable set in Heroku.
 bot.run(os.environ.get('TOKEN', None))
