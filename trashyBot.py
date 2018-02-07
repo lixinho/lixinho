@@ -55,12 +55,24 @@ async def crypto(context, *params):
 async def survey (context, question, *reactions):
 	surveyAuthor = context.message.author
 
-	botMessage = await bot.send_message(context.message.channel, question)
+	tmpMessage = await bot.send_message(context.message.channel, question)
 	for reaction in reactions:
-		await bot.add_reaction(botMessage, reaction)
+		await bot.add_reaction(tmpMessage, reaction)
 
+	botMessage = discord.utils.get(bot.messages, id=tmpMessage.id)
 	authorMessage = await bot.wait_for_message(channel=context.message.channel, author=surveyAuthor, content='$survey')
-	print(discord.utils.get(bot.messages, id=botMessage.id).reactions)
+	await bot.say(embed=discord.Embed(color=discord.Color.green(), description='**{}** ended the survey!'.format(surveyAuthor.nick)))
+
+	pmMessage = 'Here are the results of your survey!\n'
+	for reaction in botMessage.reactions:
+		reactors = await bot.get_reaction_users(reaction)
+		reactors = [reactor for reactor in reactors if reactor.id != bot.user.id]
+		pmMessage += 'Users who reacted with {} (Total: {}):\n'.format(reaction.emoji, len(reactors))
+		for reactor in reactors:
+			pmMessage += '\t- {};\n'.format(reactor.name)
+
+	await bot.send_message(surveyAuthor, content=pmMessage)
+
 
 @bot.command()
 async def rand(start : int, end : int):
@@ -122,4 +134,5 @@ async def commands():
 	await bot.say(embed=embed)
 
 # Reads the variable set in Heroku.
-bot.run(os.environ.get('TOKEN', None))
+bot.run('NDA4NDU5NjA4NDYyNzIxMDI0.DVQXww.-lcXjbzC6CwQw014gSrVPM88hWY')
+#bot.run(os.environ.get('TOKEN', None))
