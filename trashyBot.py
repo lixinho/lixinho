@@ -59,7 +59,7 @@ async def survey (context, question, *reactions):
 	for reaction in reactions:
 		await bot.add_reaction(botMessage, reaction)
 
-	authorMessage = await bot.wait_for_message(author=surveyAuthor, content='?survey close')
+	authorMessage = await bot.wait_for_message(author=surveyAuthor, content='?close')
 
 	for reaction in botMessage.reactions:
 		reactors = await bot.get_reaction_users(reaction)
