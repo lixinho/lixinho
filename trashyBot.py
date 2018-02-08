@@ -135,5 +135,4 @@ async def commands():
 	await bot.say(embed=embed)
 
 # Reads the variable set in Heroku.
-bot.run('NDA4NDU5NjA4NDYyNzIxMDI0.DVQXww.-lcXjbzC6CwQw014gSrVPM88hWY')
-#bot.run(os.environ.get('TOKEN', None))
+bot.run(os.environ.get('TOKEN', None))
