@@ -120,7 +120,7 @@ async def word(amount : int):
 		word = soup.select('b')[0].getText()
 		wordList.append(word)
 
-	await bot.say(embed=discord.Embed(color=discord.Color.green(), description='Here\'s your random words: **' + ' '.join(wordList) + '**!'))
+	await bot.say(embed=discord.Embed(color=discord.Color.green(), description='Here are your random words: **' + ' '.join(wordList) + '**!'))
 
 # Help Stuff
 @bot.command()
